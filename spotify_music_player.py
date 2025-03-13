@@ -8,25 +8,27 @@
 # Copyright:   (c) sanid 2025
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
+import os
+from dotenv import load_dotenv
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import time
 
-CLIENT_ID = '2b1ec67d9fb34e05b975533d9f084cbd'
-CLIENT_SECRET = 'd4818de138dc4b4eb3a08e73e44fc580'
-REDIRECT_URI = 'http://localhost:8888/callback'  #Redirect URL
+# Load environment variables from .env file
+load_dotenv()
 
-# Authenticate
+# Get credentials from environment variables
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+REDIRECT_URI = os.getenv("REDIRECT_URI")
 
-scope = "user-read-playback-state user-modify-playback-state user-top-read"
-
+# Authenticate with Spotify API
+scope = "user-read-playback-state user-modify-playback-state"
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
     client_id=CLIENT_ID,
     client_secret=CLIENT_SECRET,
     redirect_uri=REDIRECT_URI,
     scope=scope
 ))
-
 
 class MusicPlayerSpotify:
     """a class to get music and its informtion from Spotify"""
