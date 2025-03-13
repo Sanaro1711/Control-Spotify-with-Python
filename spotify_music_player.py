@@ -1,13 +1,3 @@
-#-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
-#
-# Author:      sanid
-#
-# Created:     11/03/2025
-# Copyright:   (c) sanid 2025
-# Licence:     <your licence>
-#-------------------------------------------------------------------------------
 import os
 from dotenv import load_dotenv
 import spotipy
